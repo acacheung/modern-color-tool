@@ -1,55 +1,59 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        Modern Color Tool
-      </h1>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">Documentation</a>
-        <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
+  <div id="app">
+    <app-header></app-header>
+    <div class="colors">
+      <h2 class="t-hidden">Colors</h2>
+      <h3 class="heading">
+        Primary color:
+        <input class="input--primary" type="color" v-model="primary">
+      </h3>
+      <div class="color background-color--primary"></div>
+      <h3 class="heading">
+        Secondary color:
+        <input class="input--secondary" type="color" v-model="secondary">
+      </h3>
+      <div class="color background-color--secondary"></div>
+    </div>
+    <div class="layouts">
+      <p class="t-text">Find your palette according to proportion and relationships.</p>
+      <div class="layout background-color--primary">
+        <svg class="fill--secondary" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="50"/>
+        </svg>
+      </div>
+      <div class="layout background-color--primary">
+        <svg class="fill--secondary" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 100,40 160,150 40,150 z"/>
+        </svg>
+      </div>
+      <div class="layout background-color--primary">
+        <svg class="fill--secondary" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="55" y="55" width="90" height="90"/>
+        </svg>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
+  import AppHeader from '@/components/AppHeader'
+  export default {
+    components: {
+      AppHeader
+    },
+    data: function () {
+      return {
+        primary: '#ebb8f8',
+        secondary: '#5938ff'
+      }
+    },
+    watch: {
+      primary (value) {
+        this.$el.style.setProperty('--primary', value)
+      },
+      secondary (value) {
+        this.$el.style.setProperty('--secondary', value)
+      }
+    }
   }
-}
 </script>
-
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
