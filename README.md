@@ -1,6 +1,6 @@
-# y
+# Modern Color Tool
 
-> y
+> https://golpher-rhinoceros-83367.netlify.com/
 
 ## Build Setup
 
