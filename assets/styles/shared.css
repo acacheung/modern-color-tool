@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+#app {
+  --primary: #ebb8f8;
+  --secondary: #5938ff;
+  display: flex;
+}
+
+.background-color--primary {
+  background-color: var(--primary);
+}
+
+.background-color--secondary {
+  background-color: var(--secondary);
+}
+
+.fill--secondary {
+  fill: var(--secondary);
+}
+
+.logo {
+  position: fixed;
+  width: 150px;
+  text-align: right;
+}
+.layouts {
+  position: relative;
+  top: 12px;
+  left: calc(50% + 45px);
+  height: calc(50vw - 90px);
+  width: calc(50vw - 90px);
+}
+
+.layout {
+  margin-bottom: 55px;
+  height: 100%;
+}
+.colors {
+  position: fixed;
+  left: 195px;
+  width: calc(50% - 195px);
+}
+
+.color {
+  height: calc(50vh - 90px);
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.t-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.fade-enter-active {
+  transition-duration: .5s;
+  transition-property: opacity;
+}
+
+.fade-enter {
+  opacity: 0;
+}
