@@ -50,9 +50,11 @@
     watch: {
       primary (value) {
         this.$el.style.setProperty('--primary', value)
+        this.$router.push(this.primary + '-' + this.secondary.substr(1))
       },
       secondary (value) {
         this.$el.style.setProperty('--secondary', value)
+        this.$router.push(this.primary + '-' + this.secondary.substr(1))
       }
     }
   }
