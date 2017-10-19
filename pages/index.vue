@@ -43,8 +43,18 @@
     },
     data: function () {
       return {
-        primary: '#ebb8f8',
-        secondary: '#5938ff'
+        primary: '',
+        secondary: ''
+      }
+    },
+    created: function () {
+      if (this.$route.hash) {
+        var colors = this.$route.hash.slice(1).split('-')
+        this.primary = '#' + colors[0]
+        this.secondary = '#' + colors[1]
+      } else {
+        this.primary = '#ebb8f8'
+        this.secondary = '#5938ff'
       }
     },
     watch: {
