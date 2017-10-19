@@ -4,8 +4,6 @@ body {
 }
 
 #app {
-  --primary: #ebb8f8;
-  --secondary: #5938ff;
   display: flex;
 }
 
