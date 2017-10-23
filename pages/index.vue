@@ -37,6 +37,7 @@
 
 <script>
   import AppHeader from '@/components/AppHeader'
+  import _ from 'lodash'
   export default {
     components: {
       AppHeader
@@ -57,14 +58,19 @@
         this.secondary = '#5938ff'
       }
     },
+    methods: {
+      slowDownRouterPush: _.throttle(function () {
+        this.$router.push(this.primary + '-' + this.secondary.substr(1))
+      }, 500)
+    },
     watch: {
       primary (value) {
-        this.$el.style.setProperty('--primary', value)
-        this.$router.push(this.primary + '-' + this.secondary.substr(1))
+        document.documentElement.style.setProperty('--primary', value)
+        this.slowDownRouterPush()
       },
       secondary (value) {
-        this.$el.style.setProperty('--secondary', value)
-        this.$router.push(this.primary + '-' + this.secondary.substr(1))
+        document.documentElement.style.setProperty('--secondary', value)
+        this.slowDownRouterPush()
       }
     }
   }
