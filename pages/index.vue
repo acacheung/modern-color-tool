@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <app-header></app-header>
+    <canvas id="favicon"></canvas>
     <div class="colors">
       <h2 class="t-hidden">Colors</h2>
       <h3 class="heading">
@@ -61,16 +62,32 @@
     methods: {
       slowDownRouterPush: _.throttle(function () {
         this.$router.push(this.primary + '-' + this.secondary.substr(1))
-      }, 500)
+      }, 500),
+      updateFavicon: function () {
+        var canvas = document.getElementById('favicon')
+        var ctx = canvas.getContext('2d')
+        canvas.width = canvas.height = 32
+        ctx.beginPath()
+        ctx.arc(16, 16, 16, 0, 2 * Math.PI, false)
+        ctx.clip()
+        ctx.fillStyle = this.primary
+        ctx.fillRect(0, 0, 16, 32)
+        ctx.fillStyle = this.secondary
+        ctx.fillRect(16, 0, 16, 32)
+        var dataURL = canvas.toDataURL()
+        document.querySelector('link[rel="icon"]').setAttribute('href', dataURL)
+      }
     },
     watch: {
       primary (value) {
         document.documentElement.style.setProperty('--primary', value)
         this.slowDownRouterPush()
+        this.updateFavicon()
       },
       secondary (value) {
         document.documentElement.style.setProperty('--secondary', value)
         this.slowDownRouterPush()
+        this.updateFavicon()
       }
     }
   }

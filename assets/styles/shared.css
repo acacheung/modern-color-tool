@@ -3,6 +3,10 @@ body {
   font-family: sans-serif;
 }
 
+#favicon {
+  display: none;
+}
+
 #app {
   display: flex;
 }
