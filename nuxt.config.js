@@ -33,7 +33,10 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    postcss: [
+      require('postcss-custom-properties')({warnings: false})
+    ]
   },
   css: [
     '@/assets/styles/shared.css'

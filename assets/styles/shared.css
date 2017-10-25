@@ -24,6 +24,7 @@ body {
   width: 150px;
   text-align: right;
 }
+
 .layouts {
   position: relative;
   top: 12px;
@@ -36,6 +37,7 @@ body {
   margin-bottom: 55px;
   height: 100%;
 }
+
 .colors {
   position: fixed;
   left: 195px;
